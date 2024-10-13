@@ -41,15 +41,15 @@ fun CoroutinesApp(viewModel: MainViewModel  ,modifier: Modifier = Modifier){
 
         },
             colors = ButtonDefaults.buttonColors(
-                if( changeColor ) Color.Blue else Color.Red
+                if( changeColor ) Color.Green else Color.Blue
             )
 
             ) {
             Text(text = stringResource(R.string.cambio_de_color))
         }
         Spacer(modifier = modifier.height(30.dp)  )
-        
-        Text(text = "${viewModel.countTime} [s]")
+        Text(text = "${viewModel.countTime} [s]")  // Mostrar el primer contador
+        Text(text = "${viewModel.countTime2} [s]")  // Mostrar el segundo contador
         Text(text = viewModel.resultState  )
         Spacer(modifier = modifier.height(30.dp))
         Button(onClick = {
@@ -57,6 +57,11 @@ fun CoroutinesApp(viewModel: MainViewModel  ,modifier: Modifier = Modifier){
         }) {
             Text(text =
             stringResource(id = R.string.realizar_consulta) )
+        }
+        Button(onClick = {
+            viewModel.cancelarContadores()  // Cancela los contadores
+        }) {
+            Text(text = "Cancelar contadores")
         }
     }
 
